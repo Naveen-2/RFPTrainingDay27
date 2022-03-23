@@ -1,5 +1,10 @@
 package com;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class Main {
 
     /**
@@ -80,6 +85,31 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
+
+        try {
+            InputStream inputStream = new FileInputStream(
+                    "N:\\Bridgelabz\\Training\\RFPTrainingDay27");
+            int byteData = inputStream.read();
+            if (byteData != -1) {
+                System.out.println(byteData);
+            }
+        } catch (IOException ignored) {
+
+        }
+
+        File file = new File(
+                "N:\\Bridgelabz\\Training\\RFPTrainingDay27");
+        try {
+            boolean isFileCreated = file.createNewFile();
+            if (isFileCreated) {
+                System.out.println("File created successfully!");
+            } else {
+                System.out.println("File already exist");
+            }
+        } catch (IOException ignored) {
+
+        }
+
         handleUserSelection();
     }
 }
